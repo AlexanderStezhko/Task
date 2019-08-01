@@ -36,6 +36,17 @@ public class Main{
         //taskL3_2();
         /*Напишите программу, заносящую вмассивпервые 100
 натуральных чисел, делящихся на 13 или на 17, и печатающую его.*/
+        //taskL3_3();//уточнить условие
+        /*Определить сумму элементов целочисленного массива,расположенных между ближайшими
+минимальным и максимальным значениями, не включая минимальное и
+максимальное значение*/
+
+        //taskL3_4 ();
+        /*Создать массив из  3  случайных целых чисел из отрезка [10;99],
+ вывести его на экран в строку.  Определить и вывести на экран сообщение о том, является ли
+ массив строго возрастающей последовательностью*/
+
+
     }
 
     public static void taskL3_1 (){
@@ -43,7 +54,7 @@ public class Main{
         for (int i=0;i<array.length;i++){
             System.out.println(array[i]);
         }
-        for (int i= array.length - 1 ; i<0 ; i--){
+        for (int i= array.length - 1 ; i<0 ; i--) {
             System.out.println(array[i]);    // пропускает обратный цикл, пишет, что i<0 всегда false
         }
     }
@@ -64,6 +75,107 @@ public class Main{
                         break;
                 }
             }
+        }
+    }
+    public static void taskL3_3(){
+        int[] array=new int [20];
+        int[] indexMinValue = new int[20];
+        int[] indexMaxValue = new int[20];
+        for (int i=0;i<array.length;i++){
+            array[i]= (int) (Math.random()*10);
+        }
+        for (int i =0;i<array.length;i++){
+            System.out.print(array[i]+" ");
+        }
+        int min=100;
+        int max=0;
+        long summ=0;
+        boolean flagMaxValue;
+        boolean flagMinValue;
+        for (int i=0;i<array.length;i++){
+            if (array[i]>max){
+                max=array[i];
+                break;
+            }
+            else if (array[i]<min){
+                min=array[i];
+            }
+        }
+        for (int j=0;j<indexMaxValue.length;j++){
+            flagMaxValue=false;
+            for(int i =0;i<array.length;i++){
+                if (array[i]==max) {
+                    indexMaxValue[j] = i;
+                    flagMaxValue=true;
+                }
+                if (flagMaxValue){
+                    break;
+                }
+
+            }
+        }
+        for (int j=0;j<indexMinValue.length;j++){
+            flagMinValue=false;
+            for(int i =0;i<array.length;i++){
+                if (array[i]==min) {
+                    indexMinValue[j] = i;
+                    flagMinValue=true;
+                }
+                if (flagMinValue){
+                    break;
+                }
+
+            }
+        }
+//        for (int j=0;j<array.length;j++){
+//            if(indexMinValue[j]+2==indexMaxValue[j]){
+//                summ+=array[indexMinValue[j]+1];
+//            }
+//            else {
+//                summ+=array[indexMinValue[j]-1]+array[indexMaxValue[j]+1];
+//            }
+//        }
+        for (int j=0;j<array.length;j++){
+            int presentValueIndexMin=indexMinValue[j];
+            int presentValueIndexMax=indexMaxValue[j];
+            if(indexMinValue[j]<indexMaxValue[j]){
+                if (presentValueIndexMin+1!=presentValueIndexMax-1) {
+                    summ += array[ presentValueIndexMin+ 1] + array[presentValueIndexMax - 1];
+                }
+                else {
+                    summ += array[presentValueIndexMin + 1];
+                }
+             }
+            else {
+                if ((presentValueIndexMin - 1) != (presentValueIndexMax + 1)) {
+                    summ += array[presentValueIndexMin - 1] + array[presentValueIndexMax + 1];
+                } else{
+                    summ += array[presentValueIndexMin - 1];
+                }
+            }
+        }
+        System.out.println("");
+        System.out.println ( summ );
+    }
+
+    public static void taskL3_4 (){
+        boolean flag=false;
+        int[] array =new int[3];
+        for(int i=0; i<array.length;i++){
+        array[i]= (int) (Math.random()*(99-10)+10);
+            System.out.print (array[i]+" ");
+        }
+        for(int i=0;i<array.length-1;i++){
+            if(array[i]>=array[i+1]){
+                flag = true;
+            }
+        }
+        if (flag){
+            System.out.println("Массив не является строго возрастающей последовательностью");
+        }
+        else{
+            System.out.println("Массив является строго возрастающей последовательностью");
+
         }
     }
 
@@ -138,7 +250,6 @@ public class Main{
             flag = leapCheck (year);
             monthlength= monthLength (month,flag,monthlength);
             checkData (year,month,day,monthlength);
-
     }
         private static int leapCheck(int year) {
             int flag;
@@ -157,41 +268,25 @@ public class Main{
 
         private static int monthLength(int month,int flag, int monthlength){
             switch (month){
-                case 1:
-                    monthlength=31;
-                    break;
+
                 case 2:
                     if (flag==1){
                         monthlength =29;}
                     else monthlength=28;
                     break;
-                case 3:
-                    monthlength=31;
-                    break;
                 case 4:
-                    monthlength=30;
-                    break;
-                case 5:
-                    monthlength=31;
-                    break;
                 case 6:
-                    monthlength=30;
-                    break;
-                case 7:
-                    monthlength=31;
-                    break;
-                case 8:
-                    monthlength=31;
-                    break;
                 case 9:
-                    monthlength=30;
-                    break;
-                case 10:
-                    monthlength=31;
-                    break;
                 case 11:
                     monthlength=30;
                     break;
+
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
                 case 12:
                     monthlength=31;
                     break;
