@@ -1,14 +1,12 @@
 public class TaskL3 {
-    public static void main (String[] args){
-        int[] array= {2,6,5,7,9,5,6,7};
-        for (int i=0;i<array.length;i++){
-            System.out.println(array[i]);
+    public static void taskL3_2 (){
+      int[] array = new int[100];
+        for(int i=0;i<array.length;i++){
+            for (int j=0;j<1000;j++){
+                if (j%13==0||j%17==0){
+                array[i]=j;
+          }
         }
-        for (int i=array.length-1; i <0 ;i--){
-            System.out.println(array[i]);
-        }
-
-
-
+      }
     }
 }
