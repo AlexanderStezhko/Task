@@ -21,8 +21,6 @@ public class Main{
 Год считается високосным, если он делится без остатка на 4. Однако, если год также
 делится на 100, то этот год не високосный, за исключением годов,делящихся на 400.
 Например:1992-високосный 1900- не високосный 2000-високосный.*/
-
-
         //task4();
         /*4*. Написать программу, которая считывает число, месяц и год, введённые
 пользователем в виде трёх целых чисел.Программа должна определять, является ли введённая дата реальной и
@@ -45,6 +43,11 @@ public class Main{
         /*Создать массив из  3  случайных целых чисел из отрезка [10;99],
  вывести его на экран в строку.  Определить и вывести на экран сообщение о том, является ли
  массив строго возрастающей последовательностью*/
+        //tasskL3_5();
+        /*Создать двухмерный квадратный массив, и заполнить его "бабочкой" Вывести его на экран, заменив 1 символом *, а 0
+-
+пробелом.*/
+
 
 
     }
@@ -158,6 +161,7 @@ public class Main{
         System.out.println ( summ );
     }
 
+
     public static void taskL3_4 (){
         boolean flag=false;
         int[] array =new int[3];
@@ -177,6 +181,41 @@ public class Main{
             System.out.println("Массив является строго возрастающей последовательностью");
 
         }
+    }
+    public static void tasskL3_5(){
+//        System.out.println("Input value");
+//        Scanner in=new Scanner(System.in);
+        int scanInt=5;//= in.nextInt();
+        char [][] array;
+        array = new char[scanInt][scanInt];
+        int tmp=2;
+        for (int i=0;i< scanInt;i++){
+            for (int j=0;j< scanInt;j++ ) {
+                array[i][j] =32;
+            }
+        }
+        for (int i=0;i< scanInt;i++){
+            if (i<=scanInt/2){
+                for (int j=i;j< scanInt-i ;j++) {
+                    array[i][j] = 42;
+                }
+            }
+            else{
+                for (int j=i-tmp;j<i;j++) {
+                    array[i][j] = 42;
+                    tmp++;
+
+                }
+            }
+        }
+        for (int i=0;i<scanInt;i++){
+            for (int j =0;j<scanInt; j++){
+                System.out.print(array[i][j]+" ");
+            }
+            System.out.println(" ");
+
+        }
+
     }
 
 
@@ -204,9 +243,9 @@ public class Main{
 
         if (summ%10==1 && summ%100!=11){
             System.out.println(summ + " " + "Рубль");}    /*upgrade with switch operator*/
-        else if (summ%1>0){
+        else if (summ%1>0||summ%10<5){
             System.out.println(summ+ " " + "Рубля");}
-        else if (summ>5){
+        else if (summ>4){
             System.out.println (summ+ " " + "Рублей");}
     }
     public static void task3(){
