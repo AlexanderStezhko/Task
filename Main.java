@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main{
     public static void main(String[] args) {
-        //  task1();
+          //task1();
         /*Запросить у пользователя 2 слова. Если они одинаковы
  - вы вести "Отлично! Слова одинаковы ".
  Если они отличаются лишь регистром - "Хорошо. Почти одинаковы"
@@ -10,13 +10,14 @@ public class Main{
  Использовать методы класса String: equals (String string), equalsIgnoreCase (String string), length ()*/
 
         //task2();
+         //task2b();
         /*Имеется целое число, вводимое пользователем с консоли. Это число  -   сумма денег в рублях.
 Вывести это число, добавив к нему слово "рубль" в правильном падеже"рубль", "рублей", "рубля").
-                a. Использовать конструкцию if -else.
+        a. Использовать конструкцию if -else.
         b. Модифицировать в switch в отдельном файле.*/
 
         //task3();
-        //task3b(); //!!!!!!!!!!!!не работает!!! Нужна консультация по выполнению.!!!!!
+
         /*Написать программу, которая считывает год, введённый пользователем, иопределяет, является ли этот год високосным.
 Год считается високосным, если он делится без остатка на 4. Однако, если год также
 делится на 100, то этот год не високосный, за исключением годов,делящихся на 400.
@@ -34,6 +35,7 @@ public class Main{
         //taskL3_2();
         /*Напишите программу, заносящую вмассивпервые 100
 натуральных чисел, делящихся на 13 или на 17, и печатающую его.*/
+
         //taskL3_3();//уточнить условие
         /*Определить сумму элементов целочисленного массива,расположенных между ближайшими
 минимальным и максимальным значениями, не включая минимальное и
@@ -55,10 +57,12 @@ public class Main{
     public static void taskL3_1 (){
         int[] array= {2,6,5,7,9,5,6,7};
         for (int i=0;i<array.length;i++){
-            System.out.println(array[i]);
+            System.out.print(array[i]+" ");
         }
-        for (int i= array.length - 1 ; i<0 ; i--) {
-            System.out.println(array[i]);    // пропускает обратный цикл, пишет, что i<0 всегда false
+        System.out.println();
+
+        for (int i= array.length - 1 ; i>=0 ; i--) {
+            System.out.print(array[i]+" ");
         }
     }
     public static void taskL3_2 (){
@@ -92,7 +96,7 @@ public class Main{
         }
         int min=100;
         int max=0;
-        long summ=0;
+        int summ=0;
         boolean flagMaxValue;
         boolean flagMinValue;
         for (int i=0;i<array.length;i++){
@@ -130,14 +134,7 @@ public class Main{
 
             }
         }
-//        for (int j=0;j<array.length;j++){
-//            if(indexMinValue[j]+2==indexMaxValue[j]){
-//                summ+=array[indexMinValue[j]+1];
-//            }
-//            else {
-//                summ+=array[indexMinValue[j]-1]+array[indexMaxValue[j]+1];
-//            }
-//        }
+
         for (int j=0;j<array.length;j++){
             int presentValueIndexMin=indexMinValue[j];
             int presentValueIndexMax=indexMaxValue[j];
@@ -242,7 +239,7 @@ public class Main{
         double summ = in.nextDouble();
 
         if (summ%10==1 && summ%100!=11){
-            System.out.println(summ + " " + "Рубль");}    /*upgrade with switch operator*/
+            System.out.println(summ + " " + "Рубль");}
         else if (summ%1>0||summ%10<5){
             System.out.println(summ+ " " + "Рубля");}
         else if (summ>4){
@@ -252,28 +249,33 @@ public class Main{
         Scanner in = new Scanner(System.in);
         System.out.println("Input random year");
         int year = in.nextInt();
-        if (year%400==0 ){
-            System.out.println ("Год високосный");}
-        else if (year%4==0 && year%100!=0){
+        if (year%400==0||year%4==0 && year%100!=0 ){
             System.out.println ("Год високосный");}
         else{
             System.out.println ("Год не високосный");}
     }
-    /*Нужна консультация: Switch-case не поддерживает логические операторы.Не знаю как прописать этот код правильно*/
-    /*public static void task3b(){
+
+    public static void task2b(){
         Scanner in = new Scanner(System.in);
         System.out.println("Input random year");
         int year = in.nextInt();
-        switch(year){
-            case(year%400==0):
-                System.out.println("Год високосный");
-                break;
-            case (year% 4 == 0 && year%100 != 0):
-                System.out.println("Год високосный");
-                break;
+        int a = 0;
+        if (year%400==0||year% 4 == 0 && year%100 != 0 )
+        {
+            a++;
         }
 
-    }*/
+        switch(a){
+            case 0:
+                System.out.println("Год не високосный");
+                break;
+             case 1:
+                System.out.println("Год високосный");
+                break;
+
+        }
+
+    }
 
     public static void task4() {
             Scanner in = new Scanner(System.in);
