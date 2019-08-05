@@ -10,7 +10,7 @@ public class Main{
  Использовать методы класса String: equals (String string), equalsIgnoreCase (String string), length ()*/
 
         //task2();
-         //task2b();
+        // task2b();
         /*Имеется целое число, вводимое пользователем с консоли. Это число  -   сумма денег в рублях.
 Вывести это число, добавив к нему слово "рубль" в правильном падеже"рубль", "рублей", "рубля").
         a. Использовать конструкцию if -else.
@@ -28,7 +28,7 @@ public class Main{
 выводить результат.Использовать следующую информацию:Январь, март, май, июль, август, октябрь, декабрь
 -31 деньАпрель, июнь, сентябрь, ноябрь-30 дней.Февраль-28 дней в обычный год, 29 дней в високосный*/
 
-        //taskL3_1();//не работает, пропускает обратный цикл
+        //taskL3_1();
         /*Напишите программу, которая печатает массив сначала в
         обычном порядке, затем в обратном.*/
 
@@ -36,7 +36,7 @@ public class Main{
         /*Напишите программу, заносящую вмассивпервые 100
 натуральных чисел, делящихся на 13 или на 17, и печатающую его.*/
 
-        //taskL3_3();//уточнить условие
+        //taskL3_3();    //не готова
         /*Определить сумму элементов целочисленного массива,расположенных между ближайшими
 минимальным и максимальным значениями, не включая минимальное и
 максимальное значение*/
@@ -45,10 +45,27 @@ public class Main{
         /*Создать массив из  3  случайных целых чисел из отрезка [10;99],
  вывести его на экран в строку.  Определить и вывести на экран сообщение о том, является ли
  массив строго возрастающей последовательностью*/
-        //tasskL3_5();
-        /*Создать двухмерный квадратный массив, и заполнить его "бабочкой" Вывести его на экран, заменив 1 символом *, а 0
--
-пробелом.*/
+        //taskL3_5();
+        /*Создать двухмерный квадратный массив, и заполнить его "бабочкой" Вывести его на экран, заменив 1 символом *, а 0-пробелом.*/
+
+        //taskL3_6();
+        // Написать метод equals, который определяет, равны ли между собой соответствующие элементы 2-х двумерных массивов.
+        //taskL3_7();
+       /* Написать программу, эмулирующую выдачу случайной карты из
+        колоды в 52 карты.
+                Вывести результат в формате "Карта of Масть". Например, "AceofSpades".  Валет -   Jack,Дама  - Queen,
+Король - King,Туз - Ace, Червы  - Hearts,Пики  - Spades, Трефы - Clubs,Бубны  -  Diamonds*/
+
+        //taskL3_8();
+        /*Написать программу, перемешивающую и печатающую списоккарт в колоде.Воспользоваться результатом предыдущей задачи.*/
+
+        //taskL3_9();
+        /*Имеется целое число, определить является ли это число простым,т.е.делится без остатка только на 1 и себя.*/
+
+        //taskL3_10a();
+        //taskL3_10b();
+        /*Написать алгоритм расчета факториала , используя циклы (for и while).*/
+
 
 
 
@@ -179,43 +196,132 @@ public class Main{
 
         }
     }
-    public static void tasskL3_5(){
-//        System.out.println("Input value");
-//        Scanner in=new Scanner(System.in);
-        int scanInt=5;//= in.nextInt();
-        char [][] array;
-        array = new char[scanInt][scanInt];
-        int tmp=2;
-        for (int i=0;i< scanInt;i++){
-            for (int j=0;j< scanInt;j++ ) {
-                array[i][j] =32;
-            }
-        }
-        for (int i=0;i< scanInt;i++){
-            if (i<=scanInt/2){
-                for (int j=i;j< scanInt-i ;j++) {
-                    array[i][j] = 42;
-                }
-            }
-            else{
-                for (int j=i-tmp;j<i;j++) {
-                    array[i][j] = 42;
-                    tmp++;
-
-                }
-            }
-        }
-        for (int i=0;i<scanInt;i++){
-            for (int j =0;j<scanInt; j++){
+    public static void taskL3_5(){
+        char[][] array = {{  42,42,42,42,42},
+                            {32,42,42,42,32},
+                            {32,32,42,32,32},
+                            {32,42,42,42,32},
+                            {42,42,42,42,42}};
+        for (int i=0;i<array.length;i++){
+            for (int j=0;j<array.length;j++){
                 System.out.print(array[i][j]+" ");
+
             }
             System.out.println(" ");
+        }
+    }
+    public static void taskL3_6() { //пропускает ввод строки i0j1
+        Scanner in = new Scanner(System.in);
+        System.out.println("Введите желаемую размерность массивов");
+        int scanInt = in.nextInt();
+        String[][] array = new String[scanInt][scanInt];
+        String[][] array2 = new String[scanInt][scanInt];
+        int countEqualsValue = 0;
+        double matchPercentage;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                System.out.println("Введите данные для заполнения массива 1,соотвествующие i №" + i + "j№" + j);
+                array[i][j] = in.nextLine();
+                System.out.println("Введите данные для заполнения массива 2,соотвествующие i №" + i + "j№" + j);
+                array2[i][j] = in.nextLine();
+            }
+        }
+        in.close();
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if (array[i][j].equals(array2[i][j])) {
+                    countEqualsValue += 1;
+                }
+            }
+        }
+        matchPercentage = (countEqualsValue / Math.pow(scanInt, 2)) * 100;
+        System.out.println("Масссивы совпадают на" + matchPercentage + "%");
+    }
+
+    public static void taskL3_7(){
+
+        String[] deckOfCards=      {"2 of Hearts","3 of Hearts","4 of Hearts","5 of Hearts","6 of Hearts","7 of Hearts","8 of Hearts","9 of Hearts","10 of Hearts","Jack of Hearts","Qeen of Hearts","King of Hearts","Ace of Hearts",
+                "2 of Spades","3 of Spades","4 f Spades","5 f Spades","6 f Spades","7 f Spades","8 f Spades","9 f Spades","10 f Spades","Jack f Spades","Qeen f Spades","King f Spades","Ace f Spades",
+                "2 of Clubs","3 of Clubs","4 of Clubs","5 of Clubs","6 of Clubs","7 of Clubs","8 of Clubs","9 of Clubs","10 of Clubs","Jack of Clubs","Qeen of Clubs","King of Clubs","Ace of Clubs",
+                "2 of Diamonds","3 of Diamonds","4 of Diamonds","5 of Diamonds","6 of Diamonds","7 of Diamonds","8 of Diamonds","9 of Diamonds","10 of Diamonds","Jack of Diamonds","Qeen of Diamonds","King of Diamonds","Ace of Diamonds"};
+
+        int value = (int) ((Math.random()*52));
+
+        System.out.println(deckOfCards[value]);
+    }
+    public static void taskL3_8(){
+
+        String[] deckOfCards=      {"2 of Hearts","3 of Hearts","4 of Hearts","5 of Hearts","6 of Hearts","7 of Hearts","8 of Hearts","9 of Hearts","10 of Hearts","Jack of Hearts","Qeen of Hearts","King of Hearts","Ace of Hearts",
+                                    "2 of Spades","3 of Spades","4 f Spades","5 f Spades","6 f Spades","7 f Spades","8 f Spades","9 f Spades","10 f Spades","Jack f Spades","Qeen f Spades","King f Spades","Ace f Spades",
+                                    "2 of Clubs","3 of Clubs","4 of Clubs","5 of Clubs","6 of Clubs","7 of Clubs","8 of Clubs","9 of Clubs","10 of Clubs","Jack of Clubs","Qeen of Clubs","King of Clubs","Ace of Clubs",
+                                    "2 of Diamonds","3 of Diamonds","4 of Diamonds","5 of Diamonds","6 of Diamonds","7 of Diamonds","8 of Diamonds","9 of Diamonds","10 of Diamonds","Jack of Diamonds","Qeen of Diamonds","King of Diamonds","Ace of Diamonds"};
+        for (int i=0;i<52;i++){
+            int randomValue=(int) ((Math.random()*52));
+            String tmp = deckOfCards[i];
+            deckOfCards[i]=deckOfCards[randomValue];
+            deckOfCards[randomValue]=tmp;
 
         }
+        for (int i=0;i<52;i++){
+            System.out.println(deckOfCards[i]);
+        }
+
+
+
 
     }
 
 
+
+
+
+    public static void taskL3_9(){
+        Scanner in= new Scanner(System.in);
+        System.out.println("Введите целое число");
+        int value;
+        value = in.nextInt();
+        int count=0;
+        for (int i=1;i<=value;i++){
+            if (value %i==0) {
+                count++;
+            }
+        }
+        if (count==2){
+            System.out.println("Число является простым");
+        }
+        else {
+            System.out.println("Число не является простым");
+        }
+    }
+
+    public static void taskL3_10a(){
+        Scanner in= new Scanner(System.in);
+        System.out.println("Введите число");
+        int value;
+        value = in.nextInt();
+        long factorial=1l;
+
+        for (int i=1;i <=value;i++){
+            factorial = (factorial *i);
+        }
+        System.out.println("Факториал числа равен:" + factorial);
+
+    }
+    public static void taskL3_10b() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Введите число");
+        int value;
+        value = in.nextInt();
+        long factorial = 1;
+        int i=1;
+        while ( i<= value){
+            factorial *=i;
+            i++;
+        }
+        System.out.println("Факториал числа равен:" + factorial);
+
+    }
 
 
 
