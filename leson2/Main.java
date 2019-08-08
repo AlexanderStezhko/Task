@@ -1,6 +1,7 @@
 package leson2;
 
-import leson4_class.Task1;
+import leson4_class.Bank;
+import leson4_class.Time;
 
 import java.util.Scanner;
 
@@ -32,11 +33,9 @@ public class Main{
 выводить результат.Использовать следующую информацию:Январь, март, май, июль, август, октябрь, декабрь
 -31 деньАпрель, июнь, сентябрь, ноябрь-30 дней.Февраль-28 дней в обычный год, 29 дней в високосный*/
 
-    Task1 test = new Task1(954);
-     test.secondConversion();
 
-
-
+        Bank test = new Bank(450);
+        test.withDrawMoney(230);
     }
 
 
