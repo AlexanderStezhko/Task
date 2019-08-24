@@ -34,8 +34,9 @@ public class Main{
 -31 деньАпрель, июнь, сентябрь, ноябрь-30 дней.Февраль-28 дней в обычный год, 29 дней в високосный*/
 
 
-        Bank test = new Bank(450);
-        test.withDrawMoney(230);
+        //Bank test = new Bank(325);
+      //  test.withDrawMoney(320);
+
     }
 
 
