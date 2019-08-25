@@ -1,82 +1,88 @@
 package leson4_class;
 
 public class Bank {
-    static int nom20 =6;
-    static int nom50=5;
-    static int  nom100=0;
-    int summOfMoney;
-
-
-
-     public Bank(int summOfMoney){
-        this.summOfMoney=summOfMoney;
-
+    public static void addNom20(int nom20) {
+        Bank.nom20 += nom20;
     }
 
-    public void addMoneyOnBank(int nom20,int nom50,int nom100){    //add Scanner
-        this.nom20+=nom20;
-        this.nom50+=nom50;
-        this.nom100+=nom100;
+    public static void addNom50(int nom50) {
+        Bank.nom50 += nom50;
     }
 
-    public int withDrawMoney (int moneyValue){
-        boolean flag =false;
-        if (summOfMoney>=moneyValue){
-            if((((moneyValue%100)%50)%20==0)  &&  ((moneyValue/100)<=nom100 && (moneyValue%100)/50<=nom50 && ((moneyValue%100)%50)/20<=nom20)){
-                    this.nom100-=moneyValue/100;
-                    this.nom50-=(moneyValue%100)/50;
-                    this.nom20-=((moneyValue%100)%50)/20;
-                    this.summOfMoney-=moneyValue;
-                     flag =true;
-                }
-            else if((((moneyValue%100)%50+50)%20==0)  &&  ((moneyValue/100)<=nom100 && (moneyValue%100)/50<=nom50-1 && ((moneyValue%100)%50)/20<=nom20)){
-                this.nom100-=moneyValue/100;
-                this.nom50-=(moneyValue%100)/50-1;
-                this.nom20-=((moneyValue%100)%50)/20;
-                this.summOfMoney-=moneyValue;
-                flag =true;
+    public static void addNom100(int nom100) {
+        Bank.nom100 += nom100;
+    }
 
+    static int nom20 = 6;//купюры,находящиеся в банкомате
+    static int nom50 = 5;
+    static int nom100 = 0;
+    int getNom20=0;   //счетчик купюр на выдачу
+    int getNom50=0;
+    int getNom100=0;
+    int summOfMoney; // сумма на счету
+    boolean flag;    //флажок выполнения условия
+
+
+    public Bank(int summOfMoney) {
+        this.summOfMoney = summOfMoney;
+
+    }
+    public void checkSumm(){
+        System.out.println("Сумма на счету составляет: "+summOfMoney);
+    }
+
+    public void startWithDraw(int desiredAmount){     //запуск метода подбра купюр,их вывода и результата успешности операции
+        checkWithDrow(desiredAmount);
+        printResult(flag);
+    }
+    public void checkWithDrow(int desiredAmount) {    //подбор необходимого набора купюр
+        int afterDesiredAmount=desiredAmount;
+        if (afterDesiredAmount <= summOfMoney) {
+            while (afterDesiredAmount >= 100 && nom100 >= 1) {
+                afterDesiredAmount -= 100;
+                nom100 -= 1;
+                getNom100++;
             }
-            else if((((moneyValue%100)%50+50)%20==0)  &&  ((moneyValue/100)<=nom100 && (moneyValue%100)/50<=nom50-1 && ((moneyValue%100)%50)/20<=nom20)) {
-                this.nom100 -= moneyValue / 100;
-                this.nom50 -= (moneyValue % 100) / 50 - 1;
-                this.nom20 -= ((moneyValue % 100) % 50) / 20;
-                this.summOfMoney -= moneyValue;
-                flag = true;
+            while (afterDesiredAmount >= 50 && nom50 >= 1) {
+                afterDesiredAmount -= 50;
+                nom50--;
+                getNom50++;
             }
-            else if (((moneyValue%100)%20==0  )&&  (moneyValue/100<=nom100 && (moneyValue%100)/20<=nom20)){
-                this.nom100-=moneyValue/100;
-                this.nom20-=(moneyValue%100)/20;
-                this.summOfMoney-=moneyValue;
-                flag=true;
-
+            while (afterDesiredAmount>=20 && nom20>=1){
+                afterDesiredAmount-=20;
+                nom20--;
+                getNom20++;
             }
-            else if (((moneyValue%50)%20==0)&&(moneyValue/50<=nom50&&(moneyValue%50)/20<=nom20)){
-                this.nom50-=moneyValue/50;
-                this.nom20-=(moneyValue%50)/20;
-                this.summOfMoney-=moneyValue;
-                flag=true;
-
-            }                }
-            else if ((moneyValue%20==0) && (moneyValue/20<=nom20)){
-
-                this.nom20-=moneyValue/20;
-                this.summOfMoney-=moneyValue;
-                flag=true;
-
-         }
-            if (flag){
-            System.out.println("Операция проведена успешно,на вашем счету осталось:"+ this.summOfMoney);
         }
-        else System.out.println("Ошибка проведения операции,на вашем счету осталось:"+ this.summOfMoney);
-        return summOfMoney;
+
+        if (afterDesiredAmount%20!=0 && (afterDesiredAmount+50)%20==0){
+            nom50++;
+            getNom50--;
+            afterDesiredAmount+=50;
+            while (afterDesiredAmount>=20 && nom20>=1) {
+                afterDesiredAmount -= 20;
+                nom20--;
+                getNom20++;
+            }
+        }
+
+        if (afterDesiredAmount==0){
+            summOfMoney-=desiredAmount;
+            flag=true;
+        }
+        else{
+            flag=false;
+        }
+
+
     }
+    public void printResult(boolean flag){    // вывод результатов
+        if (flag){
+            System.out.println("Операция проведена успешно");
+            System.out.println("Купюр выдано:\n"+"Номиналом 100 - "+getNom100+"\nНоминалом 50 - "+getNom50+"\nНоминалом 20 - "+getNom20);
+            System.out.println("Сумма на счету:"+summOfMoney);
+        }
+        else System.out.println("Некорректная сумма");
 
-
-
-
-
-
-
-
+    }
 }
