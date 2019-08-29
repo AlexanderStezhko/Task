@@ -1,6 +1,6 @@
 package leson6_oop;
 
-public class Enemy {
+public class Enemy implements Mortal {
     Enemy(String name,int health){
         this.nameOfEnemy=name;
         this.health=health;
@@ -15,6 +15,11 @@ public class Enemy {
     }
 
     int health;
+
+    public String getNameOfEnemy() {
+        return nameOfEnemy;
+    }
+
     String nameOfEnemy;
 
     public void takeDamage(int damage){
