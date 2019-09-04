@@ -1,15 +1,15 @@
-package leson6_oop.heroes;
+package lesson6_oop.heroes;
 
-import leson6_oop.Enemy;
+import lesson6_oop.Enemy;
 
-public class Warrior extends Hero {
-    Warrior(String name, int health) {
+public class Mage extends Hero {
+    public Mage(String name, int health) {
         super(name, health);
     }
 
     public void attackEnemy(Enemy obj){
-        System.out.println( name +" наносит 15 урона щитом");
-        obj.takeDamage(15);
+        System.out.println( name +" Использует проклятие и наносит урон в 12ед.");
+        obj.takeDamage(12);
         if (obj.isAlive(obj.getHealth())){
             System.out.println(obj.getNameOfEnemy()+" is alive");
             System.out.println("Health of enemy "+obj.getHealth());
@@ -17,6 +17,6 @@ public class Warrior extends Hero {
         else{
             System.out.println(obj.getNameOfEnemy()+"is dead");
         }
-
     }
+
 }

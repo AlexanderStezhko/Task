@@ -1,7 +1,4 @@
-package leson2;
-
-import leson4_class.Bank;
-import leson4_class.Time;
+package lesson2;
 
 import java.util.Scanner;
 

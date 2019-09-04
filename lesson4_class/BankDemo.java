@@ -1,4 +1,4 @@
-package leson4_class;
+package lesson4_class;
 
 public class BankDemo {
     public static void main(String[] args) {

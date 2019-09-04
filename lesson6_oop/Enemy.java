@@ -1,7 +1,9 @@
-package leson6_oop;
+package lesson6_oop;
 
-public class Enemy implements Mortal {
-    Enemy(String name,int health){
+import lesson6_oop.heroes.Hero;
+
+public abstract class Enemy implements Mortal {
+    public Enemy(String name,int health){
         this.nameOfEnemy=name;
         this.health=health;
     }
@@ -25,6 +27,7 @@ public class Enemy implements Mortal {
     public void takeDamage(int damage){
         this.health -= damage;
     }
+    public abstract void attackHero( Hero obj);
 
 
 

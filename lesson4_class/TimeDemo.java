@@ -1,4 +1,4 @@
-package leson4_class;
+package lesson4_class;
 
 public class TimeDemo {
     public static void starter(String[] args) {

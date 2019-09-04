@@ -1,11 +1,17 @@
-package leson6_oop.heroes;
+package lesson6_oop.heroes;
 
-import leson6_oop.Enemy;
-import leson6_oop.Mortal;
+import lesson6_oop.Enemy;
+import lesson6_oop.Mortal;
 
 public abstract class Hero implements Mortal {
+
     String name;
     int health;
+
+    public String getName() {
+        return name;
+    }
+
 
 
     public int getHealth() {
@@ -20,6 +26,9 @@ public abstract class Hero implements Mortal {
         this.health=health;
     }
     public abstract void attackEnemy( Enemy obj);
-    //public abstract void takeDamage();
+    public void takeDamage(int damage){
+        this.health -= damage;
+    }
+
 
 }

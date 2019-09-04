@@ -1,10 +1,10 @@
-package leson6_oop.heroes;
+package lesson6_oop.heroes;
 
 
-import leson6_oop.Enemy;
+import lesson6_oop.Enemy;
 
 public class Archer extends  Hero {
-    Archer(String name, int health) {
+    public Archer(String name, int health) {
         super(name, health);
     }
 

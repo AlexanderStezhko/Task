@@ -1,4 +1,4 @@
-package leson4_class;
+package lesson4_class;
 
 public class Bank {
     public static void addNom20(int nom20) {

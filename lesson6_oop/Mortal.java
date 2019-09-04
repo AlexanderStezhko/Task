@@ -1,4 +1,4 @@
-package leson6_oop;
+package lesson6_oop;
 
 public interface Mortal {
      default public boolean isAlive( int health) {

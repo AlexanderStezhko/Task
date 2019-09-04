@@ -1,4 +1,4 @@
-package leson3_loops_arrays;
+package lesson3_loops_arrays;
 
 import java.util.Scanner;
 
